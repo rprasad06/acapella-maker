@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    
+    <meta http-equiv="Content-Security-Policy" content=
+      "style-src 'self' 'unsafe-inline' 
+        https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css
+        https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css;
+      font-src 'self' https://cdn.jsdelivr.net/;
+      media-src * blob:; default-src 'self'; 
+      script-src 'self' 'unsafe-inline'
+        https://unpkg.com/crunker@latest/dist/crunker.js
+        https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js
+        https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js;
+      connect-src 'self' https://api.iconify.design/ blob:">
+
+    <title>Acapella Maker</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <link href="./styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    
+    <script defer src="./metronome.js"></script>
+    <script defer src="./recorder.js"></script>
+    <script defer src="./index.js"></script>
+    <script defer src="./index-functionality.js"></script>   
+    <script src="https://unpkg.com/crunker@latest/dist/crunker.js"></script>
+    
+  </head>
+  <body>
+    <div id="header">
+      <div class="top"></div>
+      <div class="header_content">
+        <div class="link-boxes" id="metronome">
+          <span class="links">Metronome Settings</span>
+        </div>
+        <div style="flex: 1;"></div>
+        <div class="name">
+          <span id="name">Acapella Maker</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="main">
+      <div class="rec-box">
+        <!-- <button id="togglemetro">toggle metronome</button> -->
+        
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+          <span style="font-size: 1em">Record to audio track:</span>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+          <i id="track-num-up" class="bi-caret-up-fill" style="font-size: 1.5em; transform: translateY(10px);"></i>
+          <span id="tracknumber" style="text-align: center; font-size: 1.5em">1</span>
+          <i id="track-num-down" class="bi-caret-down-fill" style="font-size: 1.5em; color:lightgray; transform: translateY(-10px);"></i>
+        </div>
+        <div style="flex: 1;"></div>
+
+        <iconify-icon id="metro-record-toggle" icon="mdi:metronome" style="font-size: 3em; transform: translateY(10px);"></iconify-icon>
+        <i id="startrec" class="bi-record-fill" style="color:red; font-size: 3em"></i>
+        <i id="stoprec" class="bi-stop-fill" style="font-size: 3em"></i>
+      </div>
+
+      <div class="remainder">
+        <div class="audio-box">
+          <div style="display: flex; flex-direction: row; gap: 1em;">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span style="font-size: 1em;">Track 1: </span>
+            </div>
+            <audio id="audioPlay0" controls></audio>
+          </div>
+          <div style="display: flex; flex-direction: row; gap: 1em;">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span style="font-size: 1em;">Track 2: </span>
+            </div>
+            <audio id="audioPlay1" controls></audio>
+          </div>
+          <div style="display: flex; flex-direction: row; gap: 1em;">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span style="font-size: 1em;">Track 3: </span>
+            </div>
+            <audio id="audioPlay2" controls></audio>
+          </div>
+          
+          <button id="compileaudio" style="color: lightgray; pointer-events: none;"><i class="bi-music-note-list"></i> Compile Audio</button> <!--gray out until all are filled-->
+         
+          <div id="final-audio-box" style="display: none; flex-direction: row; gap: 1em;">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span style="font-size: 1em;">Track 3: </span>
+            </div>
+            <audio id="finalAudio" controls></audio>
+          </div>
+        </div>
+
+        <div class="setting-box">
+          <span>Tempo: <span id="tempospan"></span></span>
+          <span>Meter: <span id="meterspan"></span>/4</span>
+          <script>
+            document.getElementById("tempospan").innerHTML = localStorage.getItem("tempo");
+            document.getElementById("meterspan").innerHTML = localStorage.getItem("beatCount");
+          </script>
+
+          <div style="display: flex">
+            <span style="padding-right: 1em">Microphone:</span>
+            <select name="audiodevices" id="audioselect" style="width: 100%;"></select>
+          </div>
+
+          <div style="display: flex; gap: 1em; align-content: center;">
+            <i id="monitoring" class="bi-headset" style="font-size: 1.5em; color:lightgray;"></i>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span style="font-size: 1em;">Microphone Monitoring</span>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 1em">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span id="count-in-text" style="font-size: 1em;">Measures of Count-In:</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <i id="count-in-up" class="bi-caret-up-fill" style="font-size: 1.5em; transform: translateY(10px);"></i>
+              <span id="countinmeasures" style="text-align: center; font-size: 1.5em">1</span>
+              <i id="count-in-down" class="bi-caret-down-fill" style="font-size: 1.5em; transform: translateY(-10px);"></i>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+   
+    
+  </body>
+</html>
