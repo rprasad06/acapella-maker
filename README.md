@@ -3,10 +3,10 @@
 ## Get Started
 
 **Link to GitHub Repository: [https://github.com/rprasad06/acapella-maker](https://github.com/rprasad06/acapella-maker)**
+**Link to Application Download: [Google Drive](https://drive.google.com/file/d/1FjAw7HcCIC4dFcNGefdubh8hDc872e2C/view?usp=sharing)**
 
-After unzipping the acapella-maker-setup folder (included in gradescope), there is an app setup file included for Windows and Mac.
-
-The link in the README contains all the source code for the application. Here you can inspect the code used to create the application. 
+The first link in the README contain all the source code for the application. Here you can inspect the code used to create the application. 
+The second link contains a link to the respective applications for Windows and Mac. (I was unable to test the Windows file as I am on mac, so please email me if it does not work)
 
 ## Description
 
