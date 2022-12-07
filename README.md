@@ -1,6 +1,6 @@
 # Acapella Maker
 
-**Link to GitHub Repository: [https://github.com/rprasad06/acapella-maker](https://github.com/rprasad06/acapella-maker)
+**Link to GitHub Repository: [https://github.com/rprasad06/acapella-maker](https://github.com/rprasad06/acapella-maker)**
 
 ## Description
 
