@@ -1,6 +1,12 @@
 # Acapella Maker
 
+## Get Started
+
 **Link to GitHub Repository: [https://github.com/rprasad06/acapella-maker](https://github.com/rprasad06/acapella-maker)**
+
+After unzipping the acapella-maker-setup folder (included in gradescope), there is an app setup file included for Windows and Mac.
+
+The link in the README contains all the source code for the application. Here you can inspect the code used to create the application. 
 
 ## Description
 
@@ -31,12 +37,6 @@ Here is an overview of the different options for recording.
 **It is important that you do** ***not*** **use this feature without headphones. If not using headphones, the sound will play back through the device's speakers and be picked back up through the microphone and, as expected, create a feedback loop.**
 
 - **Compile Audio:** When you are done recording individual tracks, you can press the compile audio button to compile however many tracks you recorded into a final merged audio track. Then, you can listen to your fianl result and download it buy pressing the three buttons on the side!
-
-## Get Started
-
-After unpacking the file, there are two main folders: acapella-maker-setup and acapella-maker. acapella-maker-setup contains the setup files that will allow you to use the program on your machine. Navigate to the folder and find your respective setup folder. For me on mac, I would use the .dmg folder to set up the application.
-
-The acapella-maker folder contains all the source code for the application. Here you can inspect the code used to create the application. The README would normally be located here but I put it in the main directory for ease of use. The DESIGN.md is located in this folder.
 
 # Link to Video
 
