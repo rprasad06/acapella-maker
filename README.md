@@ -1,5 +1,7 @@
 # Acapella Maker
 
+**Link to GitHub Repository: [https://github.com/rprasad06/acapella-maker](https://github.com/rprasad06/acapella-maker)
+
 ## Description
 
 Acapella Maker is a program that allows the user to record multiple audio tracks, with the option of using a metronome to record in time. Then, these audio tracks can be merged into a single track and exported as a high-quality audio wav file.
